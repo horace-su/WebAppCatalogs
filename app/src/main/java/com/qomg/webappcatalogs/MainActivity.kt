@@ -4,18 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.common.api.CommonStatusCodes.SUCCESS
 import com.qomg.webappcatalogs.api.AppLogger
 import com.qomg.webappcatalogs.network.NetworkUsage
 import com.qomg.webappcatalogs.ui.theme.WebAppCatalogsTheme
+import com.qomg.webappcatalogs.webapp.WebAppHomeScreen
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,17 +20,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             WebAppCatalogsTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                WebAppHomeScreen()
             }
         }
         simulateSocketTimeout()
         simulateTimeoutWithCoroutine()
-        NetworkUsage.updateNetworkStatus(this)
+        // Pings and downloads synchronously, so it must stay off the main thread
+        lifecycleScope.launch(Dispatchers.IO) { NetworkUsage.updateNetworkStatus(applicationContext) }
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -53,21 +46,5 @@ class MainActivity : ComponentActivity() {
         val gpa = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this)
         if (gpa == SUCCESS) return
         GoogleApiAvailability.getInstance().makeGooglePlayServicesAvailable(this)
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    WebAppCatalogsTheme {
-        Greeting("Android")
     }
 }

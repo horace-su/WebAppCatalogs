@@ -2,4 +2,32 @@
     <string name="app_name">WebAppCatalogs</string>
     <string name="msg_token_fmt">firebase token is %s</string>
     <string name="default_notification_channel_id">webappcatalogs</string>
+
+    <string name="webapp_tab_mine">我的应用 (%d)</string>
+    <string name="webapp_tab_catalog">应用目录</string>
+    <string name="webapp_empty">还没有应用。\n去「应用目录」添加，或点击 + 添加任意网址。</string>
+    <string name="webapp_add">添加</string>
+    <string name="webapp_open">打开</string>
+    <string name="webapp_added">已添加 %s</string>
+    <string name="webapp_add_custom">添加网页应用</string>
+    <string name="webapp_field_url">网址</string>
+    <string name="webapp_field_name">名称（可选）</string>
+    <string name="webapp_more">更多</string>
+    <string name="webapp_add_to_home">添加到桌面</string>
+    <string name="webapp_pin_unsupported">当前桌面不支持添加快捷方式</string>
+    <string name="webapp_delete">删除</string>
+    <string name="webapp_delete_title">删除 %s？</string>
+    <string name="webapp_delete_message">将同时清除该应用的登录状态和网站数据，并移除桌面快捷方式。</string>
+    <string name="webapp_deleted">该应用已被删除</string>
+    <string name="webapp_not_found">应用不存在或已被删除</string>
+    <string name="webapp_back">返回</string>
+    <string name="webapp_reload">刷新</string>
+    <string name="webapp_forward">前进</string>
+    <string name="webapp_home">回到首页</string>
+    <string name="webapp_copy_link">复制链接</string>
+    <string name="webapp_open_in_browser">在浏览器中打开</string>
+    <string name="webapp_no_handler">没有可以打开此链接的应用</string>
+    <string name="webapp_download_started">开始下载 %s</string>
+    <string name="webapp_download_failed">下载失败</string>
+    <string name="webapp_download_unsupported">不支持此类下载</string>
 </resources>

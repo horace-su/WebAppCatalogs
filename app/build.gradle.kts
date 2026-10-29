@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.androidx.webkit)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.multidex)
     implementation(libs.androidx.room.ktx)
